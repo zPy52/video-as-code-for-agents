@@ -1,7 +1,11 @@
 {
   "name": "video-as-code-for-agents",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zPy52/video-as-code-for-agents.git"
+  },
   "scripts": {
     "dev": "remotion studio src/index.ts",
     "typecheck": "tsc --noEmit",
