@@ -1,7 +1,6 @@
 import { Video } from 'video-as-code-for-agents';
 import { Highlight } from './components/Highlight';
 import { PresenterCard } from './components/PresenterCard';
-import { NumberedListPanel } from './components/NumberedListPanel';
 
 export default function MyVideo() {
   return (
@@ -18,19 +17,6 @@ export default function MyVideo() {
         duration={4}
         zIndex={2}
         text="Build videos from your own components"
-      />
-      <NumberedListPanel
-        start={8}
-        duration={6}
-        zIndex={3}
-        title="Get warm intro through LinkedIn:"
-        items={[
-          'Friends',
-          'Friends of friends',
-          'Current/former coworkers',
-          'School alumni networks',
-          'Employer alumni networks',
-        ]}
       />
     </Video>
   );
