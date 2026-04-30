@@ -2,37 +2,14 @@
 
 `video-as-code-for-agents` is a Remotion-powered video workspace for building MP4s with React.
 
-The idea is simple: write JSX, put scheduled components directly under `<Video>`, and let the timeline live in the code instead of in a separate JSON file or editor export.
+You just write JSX, put scheduled components directly under `<Video>`, and let the timeline live in the code instead of in a separate JSON file or editor export. 
 
-This package is intentionally opinionated:
+You can use any of your favourite tools like Tailwind, CSS, motion, Remotion and any other that's supported by React. You make components using JSX and HTML within a `<Video>` that defines the timeline boundary.
 
-- JSX is the source of truth.
-- `<Video>` is the timeline boundary.
-- Direct children are validated before render.
-- Animations should be driven by Remotion time, not wall-clock timers.
-
-## Why this exists
-
-Most video tools make you think in tracks, clips, and export steps. This project keeps the mental model closer to normal React:
-
-- each visual piece is just a component,
-- each component has `start`, `duration`, and `zIndex`,
-- and the rendered result comes from the component tree you already wrote.
-
-That makes it easier for a human or an agent to edit a video project with the same tools they already use for UI work: TypeScript, React, the terminal, and a text editor.
-
-## Install
-
-If you want to use the published package, install it from npm:
+You can install this with (p)npm:
 
 ```bash
 npm install video-as-code-for-agents
-```
-
-If you are working inside this repository, install dependencies from the `my-video/` folder:
-
-```bash
-pnpm install
 ```
 
 ## Quick Start
