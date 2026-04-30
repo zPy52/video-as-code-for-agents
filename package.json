@@ -1,5 +1,5 @@
 {
-  "name": "my-video",
+  "name": "video-as-code-for-agents",
   "version": "0.1.0",
   "type": "module",
   "scripts": {
