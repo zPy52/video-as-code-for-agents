@@ -8,7 +8,8 @@ export const highlightSchema = z.object({
   text: z.string(),
   background: z.string().default('#F26625'),
   color: z.string().default('#ffffff'),
-  fontSize: z.number().default(96),
+  fontSize: z.number().default(72),
+  maxWidth: z.number().default(880),
   typeInSeconds: z.number().default(0.6),
   typeOutSeconds: z.number().default(0.5),
 });
@@ -19,7 +20,8 @@ export function Highlight(props: HighlightProps) {
   const { localSeconds, duration } = useTimelineItem();
   const background = props.background ?? '#F26625';
   const color = props.color ?? '#ffffff';
-  const fontSize = props.fontSize ?? 96;
+  const fontSize = props.fontSize ?? 72;
+  const maxWidth = props.maxWidth ?? 880;
   const typeIn = props.typeInSeconds ?? 0.6;
   const typeOut = props.typeOutSeconds ?? 0.5;
   const length = props.text.length;
@@ -40,18 +42,32 @@ export function Highlight(props: HighlightProps) {
   const visible = props.text.slice(0, Math.min(inEnd, outEnd));
 
   return (
-    <AbsoluteFill className="items-center justify-end pb-20">
+    <AbsoluteFill
+      style={{
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        paddingBottom: 80,
+      }}
+    >
       <span
-        className="font-sans font-bold leading-none"
         style={{
+          fontFamily:
+            '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+          fontWeight: 800,
           background,
           color,
           fontSize,
-          padding: '0.18em 0.32em',
+          lineHeight: 1.15,
+          padding: '0.12em 0.28em',
           letterSpacing: '-0.01em',
-          whiteSpace: 'pre',
+          whiteSpace: 'pre-wrap',
+          wordBreak: 'break-word',
+          textAlign: 'center',
+          maxWidth,
           minHeight: '1em',
           display: 'inline-block',
+          boxDecorationBreak: 'clone',
+          WebkitBoxDecorationBreak: 'clone',
         }}
       >
         {visible || ' '}

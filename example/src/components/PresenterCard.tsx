@@ -14,9 +14,9 @@ type PresenterCardProps = z.input<typeof presenterCardSchema> & TimelineProps;
 
 const FULL_WIDTH = 730;
 const MIN_WIDTH = 12;
-const CARD_HEIGHT = 180;
-const TOP_BAR_H = 18;
-const ACCENT_SQ = 26;
+const CARD_HEIGHT = 220;
+const TOP_BAR_H = 22;
+const SQ = TOP_BAR_H;
 
 export function PresenterCard(props: PresenterCardProps) {
   const { localFrame, fps, localSeconds, duration } = useTimelineItem();
@@ -51,38 +51,40 @@ export function PresenterCard(props: PresenterCardProps) {
   );
 
   return (
-    <AbsoluteFill style={{ alignItems: 'flex-end', justifyContent: 'flex-start', paddingBottom: 72, paddingLeft: 48 }}>
+    <AbsoluteFill style={{ alignItems: 'flex-start', justifyContent: 'flex-end', paddingBottom: 72, paddingLeft: 48 }}>
       {/* Clipping wrapper — drives the wipe animation */}
       <div style={{ width: cardWidth, overflow: 'hidden', position: 'relative', height: CARD_HEIGHT }}>
         {/* Inner card at full width so content is clipped, not squished */}
         <div style={{ width: FULL_WIDTH, position: 'absolute', top: 0, left: 0 }}>
 
-          {/* Orange top accent bar with gradient */}
+          {/* Top accent bar: white → orange gradient */}
           <div
             style={{
               height: TOP_BAR_H,
-              background: `linear-gradient(90deg, ${accent} 0%, #f0a060 100%)`,
+              background: `linear-gradient(90deg, #ffffff 0%, ${accent} 100%)`,
             }}
           />
 
-          {/* Black micro-square + orange square stacked at top-left corner */}
+          {/* Black square in the top-left corner, sitting on the gradient bar */}
           <div
             style={{
               position: 'absolute',
               top: 0,
               left: 0,
-              width: ACCENT_SQ + 4,
-              height: ACCENT_SQ + 4,
+              width: SQ,
+              height: SQ,
               background: '#111',
             }}
           />
+
+          {/* Orange square just below the black one, on the white card */}
           <div
             style={{
               position: 'absolute',
-              top: 0,
+              top: SQ,
               left: 0,
-              width: ACCENT_SQ,
-              height: ACCENT_SQ,
+              width: SQ,
+              height: SQ,
               background: accent,
             }}
           />
@@ -91,21 +93,22 @@ export function PresenterCard(props: PresenterCardProps) {
           <div
             style={{
               background: '#ffffff',
-              paddingLeft: 36,
+              paddingLeft: 56,
               paddingRight: 36,
-              paddingTop: 20,
-              paddingBottom: 24,
+              paddingTop: 28,
+              paddingBottom: 28,
               opacity: textOpacity,
             }}
           >
             <div
               style={{
                 fontSize: 62,
-                fontWeight: 700,
+                fontWeight: 800,
                 color: '#0d0d0d',
                 lineHeight: 1.1,
-                letterSpacing: '-1px',
-                fontFamily: 'sans-serif',
+                letterSpacing: '-1.5px',
+                fontFamily:
+                  '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
               }}
             >
               {props.name}
@@ -113,11 +116,12 @@ export function PresenterCard(props: PresenterCardProps) {
             {props.title ? (
               <div
                 style={{
-                  marginTop: 6,
+                  marginTop: 8,
                   fontSize: 30,
-                  fontWeight: 400,
+                  fontWeight: 500,
                   color: '#444',
-                  fontFamily: 'sans-serif',
+                  fontFamily:
+                    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                 }}
               >
                 {props.title}

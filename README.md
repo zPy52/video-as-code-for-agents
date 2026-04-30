@@ -2,8 +2,7 @@
 
 SDK source for building Remotion videos from plain React components.
 
-The root package is only the toolkit. Put actual video projects in a consumer
-folder such as `my-videos/`.
+The root package is only the toolkit. Put actual video projects in a consumer folder such as `example/`.
 
 ## Root SDK
 
@@ -15,35 +14,44 @@ export { exportVideo } from 'video-as-code-for-agents';
 export { defineVideoComponent, useTimelineItem } from 'video-as-code-for-agents';
 ```
 
-The root package no longer contains a demo `src/video.tsx`, `src/components/`,
-or `src/examples/`.
+The root package no longer contains a demo `src/video.tsx`, `src/components/`, or `src/examples/`.
 
 ## Consumer Project
 
-`my-videos/` is the example/personal project. It owns:
+`example/` is the example/personal project. It owns:
 
 ```txt
-my-videos/src/index.ts
-my-videos/src/video.tsx
-my-videos/src/components/
+example/src/index.ts
+example/src/video.tsx
+example/src/components/
 ```
 
-Render from there:
+The video entry point only registers the composition:
+
+```ts
+import Video from './video';
+import { exportVideo } from 'video-as-code-for-agents';
+
+exportVideo(Video);
+```
+
+Render from the consumer project with the video renderer:
 
 ```bash
-cd my-videos
+cd example
 pnpm render
 ```
 
-That script runs:
+The consumer `render` script runs the package-provided renderer:
 
 ```bash
 video-as-code-render
 ```
 
-You can also choose an output path:
+By default it renders `src/index.ts` to `out/main.mp4`. You can also choose an entry file or output path:
 
 ```bash
+pnpm render -- --entry src/index.ts
 pnpm render -- --out out/custom.mp4
 ```
 
@@ -85,7 +93,7 @@ export default defineVideoComponent({
 });
 ```
 
-Then schedule components in `my-videos/src/video.tsx`:
+Then schedule components in `example/src/video.tsx`:
 
 ```tsx
 import { Video } from 'video-as-code-for-agents';
