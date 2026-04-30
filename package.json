@@ -1,7 +1,6 @@
 {
   "name": "my-video",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
   "scripts": {
     "dev": "remotion studio src/index.ts",
