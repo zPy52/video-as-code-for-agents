@@ -81,9 +81,9 @@ export function parseComponentArgs(argv: string[]): ComponentArgs {
 const COMPONENT_TEST_ENTRY = `
 // Remotion bundler scans for the literal "registerRoot"; exportVideo() calls it.
 import React from 'react';
-import { Video } from '@/reel/Video';
-import { exportVideo } from '@/reel/export-video';
-import { registry } from '@/reel/registry';
+import { Video } from '@/core-video';
+import { exportVideo } from '@/export-video';
+import { registry } from '@/registry';
 import { AbsoluteFill } from 'remotion';
 
 const config = __CONFIG__;
@@ -114,7 +114,7 @@ exportVideo(VideoSource);
 `;
 
 export async function renderComponent(projectRoot: string, args: ComponentArgs) {
-  const { registry } = await import('@/reel/registry');
+  const { registry } = await import('@/registry');
   const entry = (registry as Record<string, { schema: { safeParse: (v: unknown) => { success: boolean; error?: { issues: { path: (string | number)[]; message: string }[] } } } }>)[
     args.name
   ];

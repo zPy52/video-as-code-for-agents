@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import React from 'react';
 import { z } from 'zod';
-import { Video } from '@/reel/Video';
-import { defineVideoComponent } from '@/reel/component';
-import { validateVideoElement } from '@/reel/validate';
+import { Video } from '@/core-video';
+import { defineVideoComponent } from '@/component';
+import { validateVideoElement } from '@/validate';
 
 const Box = defineVideoComponent({
   name: 'Box',

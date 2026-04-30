@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseRenderArgs } from '@/reel/render';
+import { parseRenderArgs } from '@/render';
 
 describe('parseRenderArgs', () => {
   it('returns defaults when no args are passed', () => {

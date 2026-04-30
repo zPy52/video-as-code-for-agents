@@ -2,13 +2,13 @@ import { describe, expect, it } from 'vitest';
 import React from 'react';
 import { z } from 'zod';
 import { Composition } from 'remotion';
-import { Video } from '@/reel/Video';
-import { defineVideoComponent } from '@/reel/component';
-import { createRoot } from '@/reel/export-video';
+import { Video } from '@/core-video';
+import { defineVideoComponent } from '@/component';
+import { createRoot } from '@/export-video';
 
 const Box = defineVideoComponent({
   name: 'Box',
-  schema: z.object({}),
+  schema: z.object({ label: z.string().optional() }),
   component: () => null,
 });
 

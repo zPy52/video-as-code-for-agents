@@ -1,6 +1,6 @@
 import React from 'react';
 import { Composition, registerRoot } from 'remotion';
-import { getVideoDuration, secondsToFrames, type VideoProps } from '@/reel/Video';
+import { getVideoDuration, secondsToFrames, type VideoProps } from './core-video';
 
 export type VideoSourceComponent = () => React.ReactElement<VideoProps>;
 

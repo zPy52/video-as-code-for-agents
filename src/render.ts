@@ -1,6 +1,6 @@
 import path from 'node:path';
 import process from 'node:process';
-import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 
 export type RenderArgs = {
   entry: string;
@@ -8,6 +8,12 @@ export type RenderArgs = {
 };
 
 const KNOWN_FLAGS = new Set(['--entry', '--out']);
+const require = createRequire(import.meta.url);
+const studioRenderEntry = path.join(
+  path.dirname(require.resolve('@remotion/studio/renderEntry')),
+  'esm',
+  'renderEntry.mjs',
+);
 
 export function parseRenderArgs(argv: string[]): RenderArgs {
   let entry = 'src/index.ts';
@@ -57,16 +63,29 @@ export async function renderVideo(
 
   const serveUrl = await bundle({
     entryPoint,
-    webpackOverride: (config) => ({
-      ...config,
-      resolve: {
-        ...config.resolve,
-        alias: {
-          ...(config.resolve?.alias ?? {}),
-          '@': path.resolve(projectRoot, 'src'),
+    ignoreRegisterRootWarning: true,
+    webpackOverride: (config) => {
+      const { '@remotion/studio': _studioAlias, ...alias } = aliasObject(
+        config.resolve?.alias,
+      );
+
+      return {
+        ...config,
+        resolve: {
+          ...config.resolve,
+          alias: {
+            ...alias,
+            '@': path.resolve(projectRoot, 'src'),
+            '@remotion/studio/renderEntry': studioRenderEntry,
+          },
+          fallback: {
+            ...(config.resolve?.fallback ?? {}),
+            path: require.resolve('path-browserify'),
+            url: require.resolve('url/'),
+          },
         },
-      },
-    }),
+      };
+    },
   });
   const composition = await selectComposition({ serveUrl, id: 'main' });
 
@@ -80,24 +99,15 @@ export async function renderVideo(
   return { outputLocation };
 }
 
-async function main() {
-  const args = parseRenderArgs(process.argv.slice(2));
-  const result = await renderVideo(process.cwd(), args);
-  console.log(`render: wrote ${result.outputLocation}`);
+function aliasObject(alias: unknown): Record<string, string> {
+  return alias && !Array.isArray(alias) ? (alias as Record<string, string>) : {};
 }
 
-const isDirectRun = (() => {
-  if (typeof process === 'undefined' || !process.argv[1]) return false;
-  try {
-    return process.argv[1] === fileURLToPath(import.meta.url);
-  } catch {
-    return /render\.(t|j)s$/.test(process.argv[1]);
-  }
-})();
-
-if (isDirectRun) {
-  main().catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
+export async function runRenderCli(
+  argv = process.argv.slice(2),
+  projectRoot = process.cwd(),
+) {
+  const args = parseRenderArgs(argv);
+  const result = await renderVideo(projectRoot, args);
+  console.log(`render: wrote ${result.outputLocation}`);
 }

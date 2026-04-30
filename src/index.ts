@@ -1,5 +1,23 @@
-// Remotion's bundler scans this file for the literal "registerRoot"; exportVideo() calls it.
-import { exportVideo } from '@/reel/export-video';
-import Video from '@/video';
-
-exportVideo(Video);
+export {
+  Video,
+  collectScheduledChildren,
+  getVideoDuration,
+  secondsToFrames,
+  type ScheduledChild,
+  type VideoProps,
+} from './core-video';
+export {
+  defineVideoComponent,
+  type TimelineProps,
+  type VideoComponent,
+} from './component';
+export {
+  createRoot,
+  exportVideo,
+  type VideoSourceComponent,
+} from './export-video';
+export {
+  TimelineItemProvider,
+  useTimelineItem,
+  useVideoConfig,
+} from './time';

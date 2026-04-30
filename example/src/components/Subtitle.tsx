@@ -1,9 +1,9 @@
 import { z } from 'zod';
 import { AbsoluteFill, interpolate } from 'remotion';
 import { motion } from 'motion/react';
-import type { TimelineProps } from '@/reel/component';
-import { defineVideoComponent } from '@/reel/component';
-import { useTimelineItem, useVideoConfig } from '@/reel/time';
+import type { TimelineProps } from 'video-as-code-for-agents';
+import { defineVideoComponent } from 'video-as-code-for-agents';
+import { useTimelineItem, useVideoConfig } from 'video-as-code-for-agents';
 
 export const subtitleSchema = z.object({
   content: z.string(),

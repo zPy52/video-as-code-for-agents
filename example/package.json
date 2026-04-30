@@ -1,0 +1,29 @@
+{
+  "name": "my-videos",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "render": "video-as-code-render",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.454",
+    "@remotion/cli": "4.0.454",
+    "@remotion/renderer": "4.0.454",
+    "motion": "12.23.12",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.454",
+    "video-as-code-for-agents": "link:..",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.5",
+    "@types/react": "19.0.0",
+    "@types/react-dom": "19.0.0",
+    "tsx": "4.19.2",
+    "typescript": "5.7.2"
+  }
+}

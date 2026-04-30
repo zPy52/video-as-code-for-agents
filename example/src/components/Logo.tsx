@@ -1,8 +1,8 @@
 import { z } from 'zod';
 import { AbsoluteFill, interpolate } from 'remotion';
-import type { TimelineProps } from '@/reel/component';
-import { defineVideoComponent } from '@/reel/component';
-import { useTimelineItem } from '@/reel/time';
+import type { TimelineProps } from 'video-as-code-for-agents';
+import { defineVideoComponent } from 'video-as-code-for-agents';
+import { useTimelineItem } from 'video-as-code-for-agents';
 
 export const logoSchema = z.object({
   src: z.string(),
