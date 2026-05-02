@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseComponentArgs } from '@/render-component';
+import { parseComponentArgs } from '@/render/render-component';
 
 describe('parseComponentArgs', () => {
   it('parses positional component name and props JSON', () => {

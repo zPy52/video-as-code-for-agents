@@ -5,19 +5,46 @@ export {
   secondsToFrames,
   type ScheduledChild,
   type VideoProps,
-} from './core-video';
+} from './components/video/core-video';
 export {
   defineVideoComponent,
   type TimelineProps,
   type VideoComponent,
-} from './component';
+} from './components/video/component';
 export {
   createRoot,
   exportVideo,
   type VideoSourceComponent,
-} from './export-video';
+} from './render/export-video';
 export {
   TimelineItemProvider,
   useTimelineItem,
   useVideoConfig,
-} from './time';
+} from './time/time';
+export {
+  resolveEasing,
+  type CubicBezier,
+  type EasingName,
+  type EasingSpec,
+} from './effects/easing';
+export {
+  ZoomEffect,
+  getZoomState,
+  getZoomStyle,
+  motionBlurSchema,
+  resolveZoomKeyframes,
+  resolveZoomMotionBlur,
+  zoomEffectSchema,
+  zoomKeyframeSchema,
+  type MotionBlurConfig,
+  type ResolvedZoomKeyframe,
+  type ZoomEffectConfig,
+  type ZoomEffectProps,
+  type ZoomKeyframe,
+  type ZoomState,
+} from './effects/zoom/zoom-effect';
+export {
+  MediaVideo,
+  default as MediaVideoComponent,
+  mediaVideoSchema,
+} from './components/media-video/media-video';

@@ -2,8 +2,8 @@ import React from 'react';
 import path from 'node:path';
 import process from 'node:process';
 import type { z } from 'zod';
-import { Video, collectScheduledChildren } from '@/core-video';
-import type { VideoComponent, TimelineProps } from '@/component';
+import { Video, collectScheduledChildren } from '@/components/video/core-video';
+import type { VideoComponent, TimelineProps } from '@/components/video/component';
 import { registry as defaultRegistry } from '@/registry';
 
 export type Registry = Record<string, VideoComponent<z.ZodTypeAny>>;

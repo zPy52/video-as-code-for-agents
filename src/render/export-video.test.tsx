@@ -2,9 +2,9 @@ import { describe, expect, it } from 'vitest';
 import React from 'react';
 import { z } from 'zod';
 import { Composition } from 'remotion';
-import { Video } from '@/core-video';
-import { defineVideoComponent } from '@/component';
-import { createRoot } from '@/export-video';
+import { Video } from '@/components/video/core-video';
+import { defineVideoComponent } from '@/components/video/component';
+import { createRoot } from '@/render/export-video';
 
 const Box = defineVideoComponent({
   name: 'Box',

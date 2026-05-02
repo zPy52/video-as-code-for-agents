@@ -1,6 +1,6 @@
 import { createContext, useContext, type PropsWithChildren } from 'react';
 import { useCurrentFrame, useVideoConfig as useRemotionVideoConfig } from 'remotion';
-import type { TimelineProps } from './component';
+import type { TimelineProps } from '../components/video/component';
 
 type TimelineItem = TimelineProps & { fps: number };
 

@@ -4,7 +4,7 @@ import {
   collectScheduledChildren,
   getVideoDuration,
   secondsToFrames,
-} from '@/core-video';
+} from '@/components/video/core-video';
 
 function child(props: { start: number; duration: number; zIndex: number; key?: string }) {
   return React.createElement('div', props);

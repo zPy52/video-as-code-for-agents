@@ -1,7 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, Sequence } from 'remotion';
 import type { TimelineProps } from './component';
-import { TimelineItemProvider } from './time';
+import { TimelineItemProvider } from '../../time/time';
 
 export type VideoProps = {
   width: number;
