@@ -24,11 +24,13 @@
     "./src/render": "./src/render/render.ts",
     "./src/time": "./src/time/time.tsx",
     "./src/validate": "./src/validation/validate.ts",
-    "./src/zoom-effect": "./src/effects/zoom/zoom-effect.tsx"
+    "./src/zoom-effect": "./src/effects/zoom/zoom-effect.tsx",
+    "./preview": "./src/preview/preview.tsx"
   },
   "dependencies": {
     "@remotion/bundler": "4.0.454",
     "@remotion/cli": "4.0.454",
+    "@remotion/player": "4.0.454",
     "@remotion/renderer": "4.0.454",
     "motion": "12.23.12",
     "path-browserify": "^1.0.1",
